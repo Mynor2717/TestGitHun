@@ -13,7 +13,11 @@ const NoControlado = () => {
 
     const dataObject = Object.fromEntries([...data.entries()]);
     console.log(dataObject);
-  }
+
+    if (!title.trim() === "") return console.log("llena este campo");
+      
+    
+  };
   // document.addEventListener('submit', (evento) => {
   //   evento.preventDefault()
   // } )
