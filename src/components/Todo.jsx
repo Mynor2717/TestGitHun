@@ -1,4 +1,4 @@
-const Todo = ({todo}) => {
+const Todo = ({todo, deleteTodo, updateTodo}) => {
     const {title, state, descripcion, priority, id} = todo;
     return <li className="list-group-item">
         <div className="d-flex justify-content-between align-items-start">
@@ -6,8 +6,8 @@ const Todo = ({todo}) => {
                 <h5 className={`${state && 'text-decoration-line-through'}`}>{title}</h5>
                 <p className={`${state && 'text-decoration-line-through'}`}>{descripcion}</p>
                 <div className="d-flex gap-2">
-                    <button className="btn btn-sm btn-danger">Eliminar</button>
-                    <button className="btn btn-sm btn-info">Actualizar</button>
+                    <button onClick={() => deleteTodo(id)} className="btn btn-sm btn-danger">Eliminar</button>
+                    <button onClick={() => updateTodo(id)}  className="btn btn-sm btn-info">Actualizar</button>
                 </div>
             </div>
             <span className="badge text-bg-success">{priority && "Prioridad"}</span>
