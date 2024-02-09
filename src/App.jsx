@@ -1,35 +1,21 @@
 import Formulario from "./components/Formulario";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Todos from "./components/Todos";
 
-const initialStateTodos = [
-    {
-        id: 1,
-        title: 'Todo #01',
-        descripcion: 'Descripcion #01',
-        state: true,
-        priority: true,
-    },
-    {
-        id: 2,
-        title: 'Todo #02',
-        descripcion: 'Descripcion #01',
-        state: false,
-        priority: false,
-    },
-    {
-        id: 3,
-        title: 'Todo #03 ',
-        descripcion: 'Descripcion #01',
-        state: false,
-        priority: true,
-    }
-
-];
+const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
 const App = () => {
 
+
+    // Introduccion al useEffect 
+
     const [todos, setTodos] = useState(initialStateTodos);
+
+
+    useEffect(() => {
+        console.log(useEffect)
+        localStorage.setItem("todos", JSON.stringify(todos))
+    }, [todos]);
 
     const addTodo = todo => {
         setTodos([...todos, todo])
